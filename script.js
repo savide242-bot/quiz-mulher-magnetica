@@ -1,4 +1,4 @@
-﻿// Lógica do Quiz
+// Lógica do Quiz
 const questions = [
     {
         question: "Me responde com sinceridade… Qual é o seu principal objetivo?",
@@ -152,8 +152,8 @@ function loadQuestion() {
     elements.optionsContainer.innerHTML = '';
     
     const progress = ((currentQuestionIndex) / questions.length) * 100;
-    elements.progressBar.style.width =  + "" + ${progress}% + "" + ;
-    elements.questionCounter.textContent =  + "" + ${currentQuestionIndex + 1} /  + "" + ;
+    elements.progressBar.style.width = `${progress}%`;
+    elements.questionCounter.textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
 
     if (currentQ.multiSelect) {
         currentQ.options.forEach((option, index) => {
@@ -317,7 +317,7 @@ function runFinalChat() {
                 realBubble.style.boxShadow = 'none';
                 realBubble.style.padding = '0';
             }
-            realBubble.innerHTML = <p class="feedback-text"> + "$" + {finalMessages[msgIndex]}</p>;
+            realBubble.innerHTML = `<p class="feedback-text">${finalMessages[msgIndex]}</p>`;
             elements.finalChatBody.appendChild(realBubble);
             
             setTimeout(() => {
