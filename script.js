@@ -105,15 +105,17 @@ if (elements.startBtn) {
     elements.startBtn.addEventListener('click', () => {
         switchScreen(elements.home, elements.vslScreen);
         
-        // Injeta o vídeo dinamicamente APENAS quando a tela é aberta
-        const vturbContainer = document.getElementById('vturb-container');
-        if (vturbContainer && vturbContainer.innerHTML.trim() === '') {
-            vturbContainer.innerHTML = `<vturb-smartplayer id="vid-6ac292261507090c7e943773" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>`;
-            const s = document.createElement("script"); 
-            s.src = "https://scripts.converteai.net/a19f7970-0b17-43af-b7c5-eca98859e657/players/6ac292261507090c7e943773/v4/player.js";
-            s.async = true;
-            document.head.appendChild(s);
-        }
+        // Injeta o vídeo APÓS a transição de tela, pois o VTurb precisa que a div esteja visível para calcular o tamanho
+        setTimeout(() => {
+            const vturbContainer = document.getElementById('vturb-container');
+            if (vturbContainer && vturbContainer.innerHTML.trim() === '') {
+                vturbContainer.innerHTML = `<vturb-smartplayer id="vid-6ac292261507090c7e943773" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>`;
+                const s = document.createElement("script"); 
+                s.src = "https://scripts.converteai.net/a19f7970-0b17-43af-b7c5-eca98859e657/players/6ac292261507090c7e943773/v4/player.js";
+                s.async = true;
+                document.head.appendChild(s);
+            }
+        }, 500);
     });
 }
 
