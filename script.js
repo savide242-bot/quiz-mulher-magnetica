@@ -112,6 +112,12 @@ if (elements.vslContinueBtn) {
         switchScreen(elements.vslScreen, elements.quiz);
         currentQuestionIndex = 0;
         loadQuestion();
+        
+        // Remove o vídeo do fundo para o áudio parar quando a pessoa avançar
+        const vturbContainer = document.getElementById('vturb-container');
+        if (vturbContainer) {
+            vturbContainer.innerHTML = '';
+        }
     });
 }
 
