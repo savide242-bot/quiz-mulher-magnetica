@@ -633,3 +633,7 @@ h1, h2, h3, h4, .headline {
         padding: 40px 20px;
     }
 }
+.option-btn.selected {
+    border-color: var(--primary-color) !important;
+    background: var(--primary-light) !important;
+}
