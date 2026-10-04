@@ -83,10 +83,20 @@ const questions = [
         ]
     },
     {
-        question: "Se existisse um plano prático de 14 dias mostrando exatamente o que fazer para despertar atração e saudade no homem que você deseja... você se comprometeria a seguir?",
+        question: "Quais dessas estratégias você mais gostaria de aprender? (pode escolher mais de uma)",
         options: [
-            { text: "Sim, eu me comprometo!", feedback: "" }, // Última pergunta vai direto pra processamento
-            { text: "Estou totalmente preparada!", feedback: "" }
+            { text: "Como fazer ele sentir saudades de mim", feedback: "Ótima escolha. A saudade é o primeiro passo para o desejo verdadeiro e intenso." },
+            { text: "Como fazer ele se apegar a mim", feedback: "O apego emocional é o que garante que ele fique obcecado por você a longo prazo." },
+            { text: "Como fazer ele ser mais proativo comigo", feedback: "Fazer ele tomar a iniciativa vai devolver todo o poder para as suas mãos." },
+            { text: "Como entender melhor o que ele está pensando", feedback: "Ler a mente dele é a chave principal para antecipar e guiar os passos da relação." }
+        ]
+    },
+    {
+        question: "Quão pronta você está para transformar sua vida amorosa?",
+        options: [
+            { text: "Estou totalmente preparada!", feedback: "" },
+            { text: "Sinto-me confiante", feedback: "" },
+            { text: "Preciso de mais preparação", feedback: "" }
         ]
     }
 ];
@@ -109,7 +119,12 @@ const elements = {
     continueBtn: document.getElementById('continue-btn'),
     chatStatus: document.getElementById('chat-status'),
     vslScreen: document.getElementById('vsl-screen'),
-    vslContinueBtn: document.getElementById('vsl-continue-btn')
+    vslContinueBtn: document.getElementById('vsl-continue-btn'),
+    finalChatScreen: document.getElementById('final-chat-screen'),
+    finalChatBody: document.getElementById('final-chat-body'),
+    finalChatFooter: document.getElementById('final-chat-footer'),
+    finalChatStatus: document.getElementById('final-chat-status'),
+    showPlansBtn: document.getElementById('show-plans-btn')
 };
 
 // Listeners
@@ -250,8 +265,87 @@ function runProcessingLogic() {
         } else {
             clearInterval(interval);
             setTimeout(() => {
-                switchScreen(elements.processing, elements.plans);
+                switchScreen(elements.processing, elements.finalChatScreen);
+                runFinalChat();
             }, 1000);
         }
     }, 1800); // Mais demorado, gera mais ansiedade boa
+}
+
+const finalMessages = [
+    "⚠️ <b>Análise concluída.</b><br><br>Pelas suas respostas, eu identifiquei seu perfil e você tem um potencial muito alto.",
+    "Mas deixa eu te revelar algo: O problema não é falta de sorte com homens...<br><br>É que algumas atitudes podem tornar a conexão previsível e diminuir a curiosidade e o desejo dele por você.",
+    "A boa notícia?<br><br>Essa dinâmica pode mudar no seu caso.<br><br>Ativando os <b>Gatilhos de Dopamina Masculina...</b><br><br>que ajudam a aumentar a dopamina no cérebro dele, despertando mais <b>expectativa, curiosidade e desejo nas interações com você!</b>",
+    "Seguindo ações simples e <b>técnicas poderosas comprovadas cientificamente.</b>",
+    "Por isso, a solução ideal para você é o:<br><br>🔥 <b>Plano Mulher Magnética</b><br><br>Um passo a passo de 14 dias, onde você aprende a ativar os <b>Gatilhos de Dopamina</b> nele.<br><br>Vai saber exatamente o que fazer e quando fazer, para aumentar a atração nele, e deixá-lo louco por você!",
+    "E o melhor: sem você precisar se humilhar, implorar ou manipular.",
+    "Como você viu... Mulheres que aplicam o <b>Plano Mulher Magnética</b> aprendem usar o gatilho de dopamina da forma certa...<br><br>E com isso deixam qualquer homem louco por elas - sem precisar implorar por atenção.",
+    "Muitas relatam que, quando aplicam o plano...<br><br>Eles mesmos passam a procurar novamente, demonstrando mais interesse, saudade e vontade de se aproximar.",
+    "Veja alguns dos benefícios que você vai ter com o Plano Mulher Magnética:<br><br>✅ Fazer ele sentir sua falta<br>✅ Aumentar a atração dele por você<br>✅ Fazer ele pensar em você como nunca<br>✅ Fazer ele querer te procurar e tomar iniciativa<br>✅ Aumentar o desejo e a conexão<br>✅ Fazer ele querer ficar cada vez mais perto de você<br>✅ Se tornar a única opção<br>✅ Se tornar inesquecível"
+];
+
+function runFinalChat() {
+    let msgIndex = 0;
+    
+    function sendNextMessage() {
+        if (msgIndex >= finalMessages.length) {
+            elements.finalChatStatus.textContent = 'Online';
+            elements.finalChatStatus.style.color = 'var(--primary-color)';
+            elements.finalChatFooter.style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            return;
+        }
+
+        // Show typing
+        elements.finalChatStatus.textContent = 'Digitando...';
+        elements.finalChatStatus.style.color = '#D81B60';
+
+        // Add typing indicator bubble
+        const typingBubble = document.createElement('div');
+        typingBubble.className = 'chat-bubble';
+        typingBubble.id = 'temp-typing-bubble';
+        typingBubble.innerHTML = '<p class="feedback-text"><span style="color:var(--text-muted);font-style:italic;">...</span></p>';
+        elements.finalChatBody.appendChild(typingBubble);
+        elements.finalChatBody.scrollTop = elements.finalChatBody.scrollHeight;
+
+        const textLength = finalMessages[msgIndex].length;
+        const delay = Math.min(Math.max(textLength * 30, 1500), 4000); // Dynamic typing time
+
+        setTimeout(() => {
+            // Remove typing bubble
+            const tb = document.getElementById('temp-typing-bubble');
+            if (tb) tb.remove();
+
+            // Add real message
+            const realBubble = document.createElement('div');
+            realBubble.className = 'chat-bubble';
+            realBubble.style.opacity = 0;
+            realBubble.style.transform = 'translateY(10px)';
+            realBubble.style.transition = 'all 0.3s ease';
+            realBubble.innerHTML = `<p class="feedback-text">${finalMessages[msgIndex]}</p>`;
+            elements.finalChatBody.appendChild(realBubble);
+            
+            // Trigger animation
+            setTimeout(() => {
+                realBubble.style.opacity = 1;
+                realBubble.style.transform = 'translateY(0)';
+            }, 50);
+
+            elements.finalChatStatus.textContent = 'Online';
+            elements.finalChatStatus.style.color = 'var(--primary-color)';
+            
+            elements.finalChatBody.scrollTop = elements.finalChatBody.scrollHeight;
+
+            msgIndex++;
+            setTimeout(sendNextMessage, 1000); // Wait 1 second before starting to type next message
+        }, delay);
+    }
+
+    sendNextMessage();
+}
+
+if (elements.showPlansBtn) {
+    elements.showPlansBtn.addEventListener('click', () => {
+        switchScreen(elements.finalChatScreen, elements.plans);
+    });
 }
