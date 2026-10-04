@@ -107,15 +107,35 @@ const elements = {
     questionCounter: document.getElementById('question-counter'),
     feedbackText: document.getElementById('feedback-text'),
     continueBtn: document.getElementById('continue-btn'),
-    chatStatus: document.getElementById('chat-status')
+    chatStatus: document.getElementById('chat-status'),
+    vslScreen: document.getElementById('vsl-screen'),
+    vslContinueBtn: document.getElementById('vsl-continue-btn')
 };
 
 // Listeners
-elements.startBtn.addEventListener('click', () => {
-    switchScreen(elements.home, elements.quiz);
-    currentQuestionIndex = 0;
-    loadQuestion();
-});
+if (elements.startBtn) {
+    elements.startBtn.addEventListener('click', () => {
+        // Ao invés de ir pro quiz direto, vai pra VSL
+        switchScreen(elements.home, elements.vslScreen);
+    });
+}
+
+if (elements.vslContinueBtn) {
+    elements.vslContinueBtn.addEventListener('click', () => {
+        // Da VSL vai pro Quiz
+        switchScreen(elements.vslScreen, elements.quiz);
+        currentQuestionIndex = 0;
+        loadQuestion();
+        
+        // Pausar o vídeo VTurb se necessário quando sair da tela, 
+        // mas como a tela só fica oculta, o ifram pode continuar tocando.
+        // Opcional: remover o iframe para parar o áudio, ou recarregar
+        const vturbIframe = document.getElementById('ifr_6ac292261507090c7e943773');
+        if(vturbIframe) {
+            vturbIframe.innerHTML = ''; 
+        }
+    });
+}
 
 elements.continueBtn.addEventListener('click', () => {
     currentQuestionIndex++;
