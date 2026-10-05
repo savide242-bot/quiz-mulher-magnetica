@@ -217,12 +217,14 @@ function handleAnswer(selectedOption) {
         elements.chatStatus.style.color = '#D81B60'; 
         
         elements.feedbackText.innerHTML = '<span style="color:var(--text-muted);font-style:italic;">...</span>';
+        elements.continueBtn.style.display = 'none'; // Esconde o botão enquanto "digita"
         switchScreen(elements.quiz, elements.feedback);
         
         setTimeout(() => {
             elements.chatStatus.textContent = 'Online';
             elements.chatStatus.style.color = 'var(--primary-color)';
             elements.feedbackText.innerHTML = selectedOption.feedback;
+            elements.continueBtn.style.display = 'block'; // Mostra o botão só depois da mensagem
         }, 3000); 
         
     } else {
