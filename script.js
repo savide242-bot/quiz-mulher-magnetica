@@ -39,12 +39,13 @@ const questions = [
   {
     question: "Quais destes desafios sentes na tua vida amorosa?\n(podes escolher mais de um)",
     multiSelect: true,
+    multiSelectFeedback: "Obrigado por partilhares isso comigo. Com base no que me disseste, consigo identificar exactamente o que está a bloquear a tua atracção.",
     options: [
-      { text: "Valorizo mais ele do que a mim própria", feedback: "" },
-      { text: "Sou rejeitada",                          feedback: "" },
-      { text: "Não consigo atrair o homem certo",       feedback: "" },
-      { text: "Não me sinto amada",                     feedback: "" },
-      { text: "Sinto que a paixão acabou",              feedback: "" }
+      { text: "Valorizo mais ele do que a mim própria" },
+      { text: "Sou rejeitada" },
+      { text: "Não consigo atrair o homem certo" },
+      { text: "Não me sinto amada" },
+      { text: "Sinto que a paixão acabou" }
     ]
   },
   {
@@ -76,11 +77,12 @@ const questions = [
   {
     question: "Quais destas estratégias gostavas mais de aprender?\n(podes escolher mais de uma)",
     multiSelect: true,
+    multiSelectFeedback: "Perfeito. Tenho exactamente o que precisas.",
     options: [
-      { text: "Como fazer ele sentir a minha falta",          feedback: "" },
-      { text: "Como fazer ele apegar-se a mim",               feedback: "" },
-      { text: "Como fazer ele ser mais proactivo comigo",     feedback: "" },
-      { text: "Como perceber melhor o que ele está a pensar", feedback: "" }
+      { text: "Como fazer ele sentir a minha falta" },
+      { text: "Como fazer ele apegar-se a mim" },
+      { text: "Como fazer ele ser mais proactivo comigo" },
+      { text: "Como perceber melhor o que ele está a pensar" }
     ]
   }
 ];
@@ -106,43 +108,26 @@ let currentQuestionIndex = 0;
 // ========================
 // ELEMENTOS DOM
 // ========================
-const homeScreen       = document.getElementById('home-screen');
-const quizScreen       = document.getElementById('quiz-screen');
-const processingScreen = document.getElementById('processing-screen');
-const finalChatScreen  = document.getElementById('final-chat-screen');
-
-const startBtn         = document.getElementById('start-btn');
-const chatArea         = document.getElementById('chat-scroll-area');
-const optionsPanel     = document.getElementById('options-panel');
-const waStatus         = document.getElementById('wa-status');
-const progressBar      = document.getElementById('progress-bar');
-const finalChatBody    = document.getElementById('final-chat-body');
-const finalChatFooter  = document.getElementById('final-chat-footer');
-const finalStatus      = document.getElementById('final-status');
-const homeBubble       = document.getElementById('home-bubble');
-
-// Anima a bolha de boas-vindas ao carregar
-window.addEventListener('load', () => {
-  setTimeout(() => { if (homeBubble) homeBubble.style.opacity = '1'; }, 600);
-});
+const chatArea       = document.getElementById('chat-area');
+const optionsPanel   = document.getElementById('options-panel');
+const waStatus       = document.getElementById('wa-status');
+const progressBar    = document.getElementById('progress-bar');
+const finalScreen    = document.getElementById('final-screen');
+const finalChatBody  = document.getElementById('final-chat-body');
+const finalChatFooter= document.getElementById('final-chat-footer');
+const finalStatus    = document.getElementById('final-status');
 
 // ========================
 // UTILS
 // ========================
-function switchScreen(hide, show) {
-  hide.classList.remove('active');
-  setTimeout(() => {
-    show.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 300);
-}
-
 function getTime() {
   const n = new Date();
   return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 }
 
-function scrollBottom(el) { el.scrollTop = el.scrollHeight; }
+function scrollBottom(el) {
+  if (el) el.scrollTop = el.scrollHeight;
+}
 
 function addBubbleIn(container, html) {
   const isImg = html.includes('<img');
@@ -185,18 +170,54 @@ function removeTyping(container) {
 }
 
 // ========================
-// HOME → QUIZ
+// INÍCIO DA PÁGINA
 // ========================
-startBtn.addEventListener('click', () => {
-  switchScreen(homeScreen, quizScreen);
-  setTimeout(loadQuestion, 350);
+window.addEventListener('load', () => {
+  // Mostrar mensagem de boas-vindas após 600ms
+  setTimeout(() => {
+    showTyping(chatArea, waStatus);
+    setTimeout(() => {
+      removeTyping(chatArea);
+      if (waStatus) waStatus.textContent = 'online';
+      addBubbleIn(chatArea,
+        "Olá! 👋<br><br>Sou o <strong>Dr. António Figueiredo</strong>, especialista em psicologia do relacionamento.<br><br>Criei uma avaliação rápida (menos de 2 minutos) que vai ajudar-te a perceber o que está a impedir o teu amor de florescer — e o que podes fazer <em>hoje</em> para mudar isso."
+      );
+      // Mostrar botão de início
+      renderStartButton();
+    }, 2200);
+  }, 600);
 });
+
+function renderStartButton() {
+  optionsPanel.innerHTML = '';
+  const btn = document.createElement('button');
+  btn.className = 'btn-start-chat';
+  btn.textContent = '👉 COMEÇAR TESTE GRÁTIS';
+  btn.addEventListener('click', startQuiz);
+  optionsPanel.appendChild(btn);
+}
+
+// ========================
+// INICIAR QUIZ
+// ========================
+function startQuiz() {
+  // Adicionar bolha de resposta do utilizador
+  addBubbleOut(chatArea, '👉 COMEÇAR TESTE GRÁTIS');
+  optionsPanel.innerHTML = '';
+
+  // Pequena pausa antes de carregar a primeira pergunta
+  setTimeout(() => {
+    loadQuestion();
+  }, 500);
+}
 
 // ========================
 // QUIZ
 // ========================
 function updateProgress() {
-  progressBar.style.width = (currentQuestionIndex / questions.length * 100) + '%';
+  if (progressBar) {
+    progressBar.style.width = (currentQuestionIndex / questions.length * 100) + '%';
+  }
 }
 
 function loadQuestion() {
@@ -227,7 +248,7 @@ function renderOptions(q) {
       btn.textContent = opt.text;
       btn.addEventListener('click', () => {
         btn.classList.toggle('selected');
-        syncConfirmBtn();
+        syncConfirmBtn(q);
       });
       optionsPanel.appendChild(btn);
     });
@@ -242,7 +263,7 @@ function renderOptions(q) {
   }
 }
 
-function syncConfirmBtn() {
+function syncConfirmBtn(q) {
   const count = optionsPanel.querySelectorAll('.option-btn.selected').length;
   let cb = document.getElementById('multi-confirm-btn');
   if (count > 0 && !cb) {
@@ -252,7 +273,7 @@ function syncConfirmBtn() {
     cb.textContent = 'Continuar ➔';
     cb.addEventListener('click', () => {
       const selected = [...optionsPanel.querySelectorAll('.option-btn.selected')].map(b => b.textContent);
-      handleAnswer({ text: selected.join(', '), feedback: '' });
+      handleAnswer({ text: selected.join(', '), feedback: q.multiSelectFeedback || '' });
     });
     optionsPanel.appendChild(cb);
   } else if (count === 0 && cb) {
@@ -263,7 +284,7 @@ function syncConfirmBtn() {
 function handleAnswer(selectedOption) {
   optionsPanel.innerHTML = '';
 
-  // Bolha verde da utilizadora
+  // Bolha verde da utilizadora (direita)
   addBubbleOut(chatArea, selectedOption.text || 'Continuar');
 
   if (selectedOption.feedback && selectedOption.feedback.trim() !== '') {
@@ -291,28 +312,16 @@ function handleAnswer(selectedOption) {
 }
 
 // ========================
-// FINISH / PROCESSING
+// FINALIZAR QUIZ → ECRÃ FINAL
 // ========================
 function finishQuiz() {
-  progressBar.style.width = '100%';
-  switchScreen(quizScreen, processingScreen);
-  setTimeout(runProcessing, 350);
-}
+  if (progressBar) progressBar.style.width = '100%';
 
-function runProcessing() {
-  const steps = document.querySelectorAll('.step');
-  let i = 0;
-  const iv = setInterval(() => {
-    if (i > 0) steps[i - 1].classList.remove('active');
-    if (i < steps.length) { steps[i].classList.add('active'); i++; }
-    else {
-      clearInterval(iv);
-      setTimeout(() => {
-        switchScreen(processingScreen, finalChatScreen);
-        setTimeout(runFinalChat, 350);
-      }, 1000);
-    }
-  }, 1600);
+  // Mostrar ecrã final directamente (sem processamento)
+  finalScreen.style.display = 'flex';
+  document.querySelector('.app-container').style.display = 'none';
+
+  setTimeout(runFinalChat, 400);
 }
 
 // ========================
@@ -320,12 +329,11 @@ function runProcessing() {
 // ========================
 function runFinalChat() {
   let idx = 0;
+
   function sendNext() {
     if (idx >= finalMessages.length) {
       if (finalStatus) finalStatus.textContent = 'online';
       finalChatFooter.style.display = 'flex';
-      finalChatFooter.style.flexDirection = 'column';
-      finalChatFooter.style.gap = '10px';
       scrollBottom(finalChatBody);
       return;
     }
@@ -341,5 +349,6 @@ function runFinalChat() {
       setTimeout(sendNext, 800);
     }, delay);
   }
+
   sendNext();
 }

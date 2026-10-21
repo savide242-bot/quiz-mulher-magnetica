@@ -13,165 +13,84 @@
 </head>
 <body>
 
-  <!-- ============================================ -->
-  <!-- TELA INICIAL (formato WhatsApp)              -->
-  <!-- ============================================ -->
-  <section id="home-screen" class="screen active">
-    <div class="app-container">
+  <!-- ================================================ -->
+  <!-- ÚNICO ECRÃ DE CHAT (home + quiz num só chat)     -->
+  <!-- ================================================ -->
+  <div class="app-container">
 
-      <!-- Header WhatsApp -->
-      <header class="wa-header">
-        <div class="wa-header-left">
-          <div class="wa-back-btn">&#8592;</div>
-          <div class="wa-avatar-wrapper">
-            <img src="doctor_avatar.jpg" alt="Dr. António">
-            <span class="online-dot"></span>
-          </div>
-          <div class="wa-contact-info">
-            <span class="wa-contact-name">Dr. António Figueiredo</span>
-            <span class="wa-status">online</span>
-          </div>
+    <!-- Header WhatsApp -->
+    <header class="wa-header">
+      <div class="wa-header-left">
+        <div class="wa-back-btn">&#8592;</div>
+        <div class="wa-avatar-wrapper">
+          <img src="doctor_avatar.jpg" alt="Dr. António">
+          <span class="online-dot"></span>
         </div>
-        <div class="wa-header-right">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.65.24-1.01A11.36 11.36 0 018.56 4.3c0-.55-.45-1-1-1H4.03c-.55 0-1 .45-1 1C3.03 13.67 10.33 21 19.33 21c.55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <div class="wa-contact-info">
+          <span class="wa-contact-name">Dr. António Figueiredo</span>
+          <span class="wa-status" id="wa-status">online</span>
         </div>
-      </header>
-
-      <!-- Área de chat com mensagem inicial do doutor -->
-      <main class="chat-scroll-area" id="home-chat-area">
-        <div class="encryption-notice">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-          <span>As mensagens são protegidas com criptografia de ponta a ponta.</span>
-        </div>
-        <div class="date-divider">HOJE</div>
-
-        <!-- Mensagem de boas-vindas do doutor -->
-        <div class="bubble-in home-welcome-bubble" id="home-bubble" style="opacity:0;">
-          Use o <u>"gatilho de dopamina"</u> para <strong>aumentar a atracção dele em ti</strong>, e fazer ele <strong>sentir a tua falta.</strong><br><br>
-          Clica abaixo, faz o <strong>teste grátis de 1 minuto</strong> e aprende...
-          <div class="bubble-time">agora</div>
-        </div>
-      </main>
-
-      <!-- Botão COMEÇAR no painel inferior (aparece como mensagem enviada) -->
-      <footer class="options-panel home-footer">
-        <button id="start-btn" class="btn-start-chat pulse-anim">👉 COMEÇAR TESTE GRÁTIS</button>
-      </footer>
-
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- TELA WHATSAPP QUIZ                           -->
-  <!-- ============================================ -->
-  <section id="quiz-screen" class="screen">
-    <div class="app-container">
-
-      <!-- Header WhatsApp -->
-      <header class="wa-header">
-        <div class="wa-header-left">
-          <div class="wa-back-btn">&#8592;</div>
-          <div class="wa-avatar-wrapper">
-            <img src="doctor_avatar.jpg" alt="Dr. António">
-            <span class="online-dot"></span>
-          </div>
-          <div class="wa-contact-info">
-            <span class="wa-contact-name">Dr. António Figueiredo</span>
-            <span class="wa-status" id="wa-status">online</span>
-          </div>
-        </div>
-        <div class="wa-header-right">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.65.24-1.01A11.36 11.36 0 018.56 4.3c0-.55-.45-1-1-1H4.03c-.55 0-1 .45-1 1C3.03 13.67 10.33 21 19.33 21c.55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-        </div>
-      </header>
-
-      <!-- Barra de progresso -->
-      <div class="progress-wrap"><div id="progress-bar" class="progress-bar"></div></div>
-
-      <!-- Área de mensagens -->
-      <main class="chat-scroll-area" id="chat-scroll-area">
-        <div class="encryption-notice">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-          <span>As mensagens são protegidas com criptografia de ponta a ponta e ficam apenas entre ti e o Dr. António.</span>
-        </div>
-        <div class="date-divider">HOJE</div>
-        <!-- Mensagens injectadas via JS -->
-      </main>
-
-      <!-- Painel de opções (fixo em baixo) -->
-      <footer class="options-panel" id="options-panel">
-        <!-- Botões injectados via JS -->
-      </footer>
-
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- TELA DE PROCESSAMENTO (simples)              -->
-  <!-- ============================================ -->
-  <section id="processing-screen" class="screen">
-    <div class="app-container">
-      <header class="wa-header">
-        <div class="wa-header-left">
-          <div class="wa-avatar-wrapper" style="margin-left:10px;">
-            <img src="doctor_avatar.jpg" alt="Dr. António">
-            <span class="online-dot"></span>
-          </div>
-          <div class="wa-contact-info">
-            <span class="wa-contact-name">Dr. António Figueiredo</span>
-            <span class="wa-status">a analisar...</span>
-          </div>
-        </div>
-      </header>
-      <div class="processing-body">
-        <div class="spinner"></div>
-        <h3 class="processing-title">A gerar o teu diagnóstico personalizado...</h3>
-        <ul id="processing-steps">
-          <li class="step">A analisar as tuas respostas comportamentais...</li>
-          <li class="step">A cruzar dados com perfis masculinos...</li>
-          <li class="step">A mapear os gatilhos de dopamina para o teu caso...</li>
-        </ul>
       </div>
-    </div>
-  </section>
+      <div class="wa-header-right">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.65.24-1.01A11.36 11.36 0 018.56 4.3c0-.55-.45-1-1-1H4.03c-.55 0-1 .45-1 1C3.03 13.67 10.33 21 19.33 21c.55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z"/></svg>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      </div>
+    </header>
 
-  <!-- ============================================ -->
-  <!-- TELA FINAL CHAT (depoimentos + oferta)       -->
-  <!-- ============================================ -->
-  <section id="final-chat-screen" class="screen">
-    <div class="app-container">
-      <header class="wa-header">
-        <div class="wa-header-left">
-          <div class="wa-back-btn">&#8592;</div>
-          <div class="wa-avatar-wrapper">
-            <img src="doctor_avatar.jpg" alt="Dr. António">
-            <span class="online-dot"></span>
-          </div>
-          <div class="wa-contact-info">
-            <span class="wa-contact-name">Dr. António Figueiredo</span>
-            <span class="wa-status" id="final-status">online</span>
-          </div>
+    <!-- Barra de progresso (escondida no início) -->
+    <div class="progress-wrap"><div id="progress-bar" class="progress-bar"></div></div>
+
+    <!-- Área de mensagens — tudo aqui, sem mudar de ecrã -->
+    <main class="chat-scroll-area" id="chat-area">
+      <div class="encryption-notice">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <span>As mensagens são protegidas com criptografia de ponta a ponta.</span>
+      </div>
+      <div class="date-divider">HOJE</div>
+      <!-- Todas as mensagens injectadas via JS -->
+    </main>
+
+    <!-- Painel inferior: botão início ou opções do quiz -->
+    <footer class="options-panel" id="options-panel"></footer>
+
+  </div>
+
+  <!-- ================================================ -->
+  <!-- TELA FINAL (depoimentos + oferta)                -->
+  <!-- ================================================ -->
+  <div class="app-container" id="final-screen" style="display:none; position:fixed; inset:0; z-index:100;">
+
+    <header class="wa-header">
+      <div class="wa-header-left">
+        <div class="wa-back-btn">&#8592;</div>
+        <div class="wa-avatar-wrapper">
+          <img src="doctor_avatar.jpg" alt="Dr. António">
+          <span class="online-dot"></span>
         </div>
-      </header>
-      <main class="chat-scroll-area" id="final-chat-body">
-        <div class="date-divider">HOJE</div>
-      </main>
-      <footer class="options-panel" id="final-chat-footer" style="display:none;">
-        <a href="https://pay.hotmart.com/P108134502G?off=vlywnk0c&checkoutMode=10&bid=1792620514757" class="cta-green pulse-anim" target="_blank">
-          Quero o meu plano agora ➔
-        </a>
-        <div class="price-box">
-          <span class="price-main">4,24 €</span>
-          <span class="price-vat">IVA Incluído (0,24 €)</span>
+        <div class="wa-contact-info">
+          <span class="wa-contact-name">Dr. António Figueiredo</span>
+          <span class="wa-status" id="final-status">online</span>
         </div>
-        <p class="guarantee-txt">🛡️ Garantia de 30 dias · Pagamento 100% seguro</p>
-      </footer>
-    </div>
-  </section>
+      </div>
+    </header>
+
+    <main class="chat-scroll-area" id="final-chat-body">
+      <div class="date-divider">HOJE</div>
+    </main>
+
+    <footer class="options-panel" id="final-chat-footer" style="display:none; flex-direction:column; gap:10px;">
+      <a href="https://pay.hotmart.com/P108134502G?off=vlywnk0c&checkoutMode=10&bid=1792620514757" class="cta-green pulse-anim" target="_blank">
+        Quero o meu plano agora ➔
+      </a>
+      <div class="price-box">
+        <span class="price-main">4,24 €</span>
+        <span class="price-vat">IVA Incluído (0,24 €)</span>
+      </div>
+      <p class="guarantee-txt">🛡️ Garantia de 30 dias · Pagamento 100% seguro</p>
+    </footer>
+
+  </div>
 
   <script src="script.js"></script>
 </body>

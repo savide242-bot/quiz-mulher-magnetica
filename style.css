@@ -22,34 +22,13 @@ body {
   background: #111B21;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
 /* ========================
-   SCREENS
-   ======================== */
-.screen {
-  display: none;
-  width: 100%;
-  min-height: 100vh;
-}
-.screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
-/* ========================
    HOME (dentro do chat WA)
    ======================== */
-.home-welcome-bubble {
-  transition: opacity .5s ease;
-}
-
-/* Botão de início estilo "mensagem enviada" verde */
-.home-footer {
-  justify-content: flex-end !important;
-  padding: 12px 12px 20px !important;
-  background: var(--wa-bg) !important;
-  border-top: none !important;
-}
 
 .btn-start-chat {
   background: var(--wa-teal);
@@ -369,73 +348,6 @@ body {
 }
 
 /* ========================
-   PROCESSING (simples)
-   ======================== */
-.processing-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
-  text-align: center;
-  background: var(--wa-bg);
-}
-
-.spinner {
-  width: 52px;
-  height: 52px;
-  border: 4px solid rgba(18,140,126,.2);
-  border-top: 4px solid var(--wa-teal);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 24px;
-}
-@keyframes spin { to { transform:rotate(360deg); } }
-
-.processing-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--wa-text);
-  margin-bottom: 24px;
-  line-height: 1.4;
-  max-width: 300px;
-}
-
-#processing-steps {
-  list-style: none;
-  width: 100%;
-  max-width: 380px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 11px 14px;
-  background: rgba(255,255,255,.5);
-  border-radius: 10px;
-  font-size: 13px;
-  color: var(--wa-muted);
-  opacity: .4;
-  transition: all .5s ease;
-}
-.step::before { content: "⏳"; flex-shrink: 0; }
-.step.active {
-  opacity: 1;
-  color: var(--wa-header);
-  font-weight: 600;
-  background: #fff;
-  border: 1px solid var(--wa-teal);
-  box-shadow: 0 3px 10px rgba(18,140,126,.1);
-}
-.step.active::before { content: "✅"; }
-
-/* ========================
    PREÇO / CTA FINAL
    ======================== */
 .price-box {
@@ -470,8 +382,6 @@ body {
   /* Bubbles com largura máxima para leitura confortável */
   .bubble-in  { max-width: 55%; }
   .bubble-out { max-width: 55%; }
-
-  .screen.active { height: 100vh; min-height: 100vh; }
 
   /* Home também full-width no desktop */
   .home-wrapper { min-height: 100vh; }
