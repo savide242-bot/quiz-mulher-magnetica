@@ -369,7 +369,7 @@ body {
 }
 
 /* ========================
-   PROCESSING
+   PROCESSING (simples)
    ======================== */
 .processing-body {
   flex: 1;
@@ -382,52 +382,14 @@ body {
   background: var(--wa-bg);
 }
 
-.proc-avatar-wrap {
-  position: relative;
-  margin-bottom: 28px;
-}
-
-.proc-pulse-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  border: 3px solid rgba(18,140,126,.3);
-  animation: procPulse 2s ease infinite;
-}
-@keyframes procPulse {
-  0%   { transform:scale(.9); opacity:.7; }
-  50%  { transform:scale(1.1); opacity:.3; }
-  100% { transform:scale(.9); opacity:.7; }
-}
-
-.proc-avatar-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--wa-teal);
-  display: block;
-}
-
-.proc-online-dot {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 14px;
-  height: 14px;
-  background: #4CAF50;
-  border: 2.5px solid var(--wa-bg);
-  border-radius: 50%;
-}
-
 .spinner {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border: 4px solid rgba(18,140,126,.2);
   border-top: 4px solid var(--wa-teal);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 @keyframes spin { to { transform:rotate(360deg); } }
 
@@ -437,10 +399,20 @@ body {
   color: var(--wa-text);
   margin-bottom: 24px;
   line-height: 1.4;
+  max-width: 300px;
 }
 
-.proc-steps-log { width:100%; max-width:380px; text-align:left; display:flex; flex-direction:column; gap:8px; }
-.proc-step {
+#processing-steps {
+  list-style: none;
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -449,10 +421,11 @@ body {
   border-radius: 10px;
   font-size: 13px;
   color: var(--wa-muted);
-  opacity: .45;
+  opacity: .4;
   transition: all .5s ease;
 }
-.proc-step.active {
+.step::before { content: "⏳"; flex-shrink: 0; }
+.step.active {
   opacity: 1;
   color: var(--wa-header);
   font-weight: 600;
@@ -460,7 +433,7 @@ body {
   border: 1px solid var(--wa-teal);
   box-shadow: 0 3px 10px rgba(18,140,126,.1);
 }
-.proc-icon { font-size:16px; flex-shrink:0; }
+.step.active::before { content: "✅"; }
 
 /* ========================
    PREÇO / CTA FINAL
@@ -480,18 +453,31 @@ body {
    RESPONSIVO
    ======================== */
 @media (min-width:481px) {
-  body { padding:20px; }
+  body { padding: 0; background: var(--wa-bg); }
+
+  /* Desktop: chat ocupa a largura toda como WhatsApp Web */
   .app-container {
-    border-radius: 16px;
-    overflow: hidden;
-    min-height: auto;
-    max-height: 92vh;
-    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
   }
-  .chat-scroll-area { max-height: calc(92vh - 220px); }
-  .screen.active { min-height: auto; height:100vh; }
+
+  .chat-scroll-area {
+    max-height: calc(100vh - 130px);
+  }
+
+  /* Bubbles com largura máxima para leitura confortável */
+  .bubble-in  { max-width: 55%; }
+  .bubble-out { max-width: 55%; }
+
+  .screen.active { height: 100vh; min-height: 100vh; }
+
+  /* Home também full-width no desktop */
+  .home-wrapper { min-height: 100vh; }
 }
+
 @media (max-width:480px) {
-  body { padding:0; align-items:flex-start; }
-  .app-container { min-height:100dvh; }
+  body { padding: 0; align-items: flex-start; }
+  .app-container { min-height: 100dvh; }
 }

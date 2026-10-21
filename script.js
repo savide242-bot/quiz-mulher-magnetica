@@ -300,7 +300,7 @@ function finishQuiz() {
 }
 
 function runProcessing() {
-  const steps = document.querySelectorAll('.proc-step');
+  const steps = document.querySelectorAll('.step');
   let i = 0;
   const iv = setInterval(() => {
     if (i > 0) steps[i - 1].classList.remove('active');

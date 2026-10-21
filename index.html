@@ -111,14 +111,15 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- TELA DE PROCESSAMENTO                        -->
+  <!-- TELA DE PROCESSAMENTO (simples)              -->
   <!-- ============================================ -->
   <section id="processing-screen" class="screen">
     <div class="app-container">
       <header class="wa-header">
         <div class="wa-header-left">
-          <div class="wa-avatar-wrapper">
-            <img src="doctor_avatar.jpg" alt="Dr. António" style="margin-left:6px;">
+          <div class="wa-avatar-wrapper" style="margin-left:10px;">
+            <img src="doctor_avatar.jpg" alt="Dr. António">
+            <span class="online-dot"></span>
           </div>
           <div class="wa-contact-info">
             <span class="wa-contact-name">Dr. António Figueiredo</span>
@@ -127,19 +128,13 @@
         </div>
       </header>
       <div class="processing-body">
-        <div class="proc-avatar-wrap">
-          <div class="proc-pulse-ring"></div>
-          <img src="doctor_avatar.jpg" alt="Dr. António" class="proc-avatar-img">
-          <span class="proc-online-dot"></span>
-        </div>
         <div class="spinner"></div>
-        <h3 class="processing-title">A contactar o Dr. António Figueiredo, por favor aguarda...</h3>
-        <div class="proc-steps-log">
-          <div class="proc-step active" id="proc-step-1"><span class="proc-icon">📡</span><span>A contactar o Dr. António, por favor aguarda...</span></div>
-          <div class="proc-step" id="proc-step-2"><span class="proc-icon">🔒</span><span>A inicializar criptografia segura de ponta a ponta...</span></div>
-          <div class="proc-step" id="proc-step-3"><span class="proc-icon">🩺</span><span>A preparar diagnóstico confidencial...</span></div>
-          <div class="proc-step" id="proc-step-4"><span class="proc-icon">✅</span><span>Doutor ligado! A abrir atendimento exclusivo...</span></div>
-        </div>
+        <h3 class="processing-title">A gerar o teu diagnóstico personalizado...</h3>
+        <ul id="processing-steps">
+          <li class="step">A analisar as tuas respostas comportamentais...</li>
+          <li class="step">A cruzar dados com perfis masculinos...</li>
+          <li class="step">A mapear os gatilhos de dopamina para o teu caso...</li>
+        </ul>
       </div>
     </div>
   </section>
