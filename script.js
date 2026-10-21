@@ -3,6 +3,15 @@
 // ========================
 const questions = [
   {
+    question: "Para começar, diz-me: Qual é a tua idade?",
+    options: [
+      { text: "18-29 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
+      { text: "30-39 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
+      { text: "40-49 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
+      { text: "50+",        feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." }
+    ]
+  },
+  {
     question: "Responde com sinceridade… Qual é o teu principal objectivo?",
     options: [
       { text: "Atrair o homem certo",   feedback: "Entendi... E isso é totalmente possível quando sabes como a mente dele funciona." },
@@ -110,6 +119,12 @@ const progressBar      = document.getElementById('progress-bar');
 const finalChatBody    = document.getElementById('final-chat-body');
 const finalChatFooter  = document.getElementById('final-chat-footer');
 const finalStatus      = document.getElementById('final-status');
+const homeBubble       = document.getElementById('home-bubble');
+
+// Anima a bolha de boas-vindas ao carregar
+window.addEventListener('load', () => {
+  setTimeout(() => { if (homeBubble) homeBubble.style.opacity = '1'; }, 600);
+});
 
 // ========================
 // UTILS
@@ -127,11 +142,8 @@ function getTime() {
   return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 }
 
-function scrollBottom(el) {
-  el.scrollTop = el.scrollHeight;
-}
+function scrollBottom(el) { el.scrollTop = el.scrollHeight; }
 
-// Cria uma bolha RECEBIDA (doutor)
 function addBubbleIn(container, html) {
   const isImg = html.includes('<img');
   const div = document.createElement('div');
@@ -148,7 +160,6 @@ function addBubbleIn(container, html) {
   scrollBottom(container);
 }
 
-// Cria uma bolha ENVIADA (utilizadora)
 function addBubbleOut(container, text) {
   const div = document.createElement('div');
   div.className = 'bubble-out';
@@ -157,9 +168,9 @@ function addBubbleOut(container, text) {
   scrollBottom(container);
 }
 
-// Mostra indicador "a digitar..."
-function showTyping(container) {
+function showTyping(container, statusEl) {
   removeTyping(container);
+  if (statusEl) statusEl.textContent = 'a digitar...';
   const div = document.createElement('div');
   div.className = 'bubble-typing';
   div.id = 'typing-indicator';
@@ -174,13 +185,16 @@ function removeTyping(container) {
 }
 
 // ========================
-// QUIZ
+// HOME → QUIZ
 // ========================
 startBtn.addEventListener('click', () => {
   switchScreen(homeScreen, quizScreen);
   setTimeout(loadQuestion, 350);
 });
 
+// ========================
+// QUIZ
+// ========================
 function updateProgress() {
   progressBar.style.width = (currentQuestionIndex / questions.length * 100) + '%';
 }
@@ -190,15 +204,14 @@ function loadQuestion() {
   updateProgress();
   optionsPanel.innerHTML = '';
 
-  // Doutor "a digitar..."
-  waStatus.textContent = 'a digitar...';
-  showTyping(chatArea);
+  showTyping(chatArea, waStatus);
 
-  const delay = Math.min(Math.max(q.question.length * 18, 1000), 2500);
+  const cleanText = q.question.replace(/<[^>]*>/g, '');
+  const delay = Math.min(Math.max(cleanText.length * 18, 1000), 2500);
 
   setTimeout(() => {
     removeTyping(chatArea);
-    waStatus.textContent = 'online';
+    if (waStatus) waStatus.textContent = 'online';
     addBubbleIn(chatArea, q.question.replace(/\n/g, '<br>'));
     renderOptions(q);
   }, delay);
@@ -237,7 +250,10 @@ function syncConfirmBtn() {
     cb.id = 'multi-confirm-btn';
     cb.className = 'confirm-btn';
     cb.textContent = 'Continuar ➔';
-    cb.addEventListener('click', () => handleAnswer({ feedback: '' }));
+    cb.addEventListener('click', () => {
+      const selected = [...optionsPanel.querySelectorAll('.option-btn.selected')].map(b => b.textContent);
+      handleAnswer({ text: selected.join(', '), feedback: '' });
+    });
     optionsPanel.appendChild(cb);
   } else if (count === 0 && cb) {
     cb.remove();
@@ -245,44 +261,31 @@ function syncConfirmBtn() {
 }
 
 function handleAnswer(selectedOption) {
-  // Desactiva os botões e limpa o painel
   optionsPanel.innerHTML = '';
 
-  // 1. Mostra a bolha da resposta da utilizadora (verde, direita)
-  addBubbleOut(chatArea, selectedOption.text || '✔ Seleccionado');
+  // Bolha verde da utilizadora
+  addBubbleOut(chatArea, selectedOption.text || 'Continuar');
 
   if (selectedOption.feedback && selectedOption.feedback.trim() !== '') {
-    // 2. Doutor "a digitar..."
-    waStatus.textContent = 'a digitar...';
-    showTyping(chatArea);
-
+    showTyping(chatArea, waStatus);
     const delay = Math.min(Math.max(selectedOption.feedback.length * 22, 1200), 3000);
 
     setTimeout(() => {
       removeTyping(chatArea);
-      waStatus.textContent = 'online';
+      if (waStatus) waStatus.textContent = 'online';
       addBubbleIn(chatArea, selectedOption.feedback);
-
-      // 3. Avança para próxima pergunta
       setTimeout(() => {
         currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-          loadQuestion();
-        } else {
-          finishQuiz();
-        }
+        if (currentQuestionIndex < questions.length) loadQuestion();
+        else finishQuiz();
       }, 900);
     }, delay);
 
   } else {
-    // Sem feedback (multiSelect ou vazio) — avança directo
     setTimeout(() => {
       currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-      } else {
-        finishQuiz();
-      }
+      if (currentQuestionIndex < questions.length) loadQuestion();
+      else finishQuiz();
     }, 600);
   }
 }
@@ -299,13 +302,10 @@ function finishQuiz() {
 function runProcessing() {
   const steps = document.querySelectorAll('.proc-step');
   let i = 0;
-
   const iv = setInterval(() => {
     if (i > 0) steps[i - 1].classList.remove('active');
-    if (i < steps.length) {
-      steps[i].classList.add('active');
-      i++;
-    } else {
+    if (i < steps.length) { steps[i].classList.add('active'); i++; }
+    else {
       clearInterval(iv);
       setTimeout(() => {
         switchScreen(processingScreen, finalChatScreen);
@@ -320,32 +320,26 @@ function runProcessing() {
 // ========================
 function runFinalChat() {
   let idx = 0;
-
   function sendNext() {
     if (idx >= finalMessages.length) {
-      finalStatus.textContent = 'online';
+      if (finalStatus) finalStatus.textContent = 'online';
       finalChatFooter.style.display = 'flex';
       finalChatFooter.style.flexDirection = 'column';
       finalChatFooter.style.gap = '10px';
       scrollBottom(finalChatBody);
       return;
     }
-
-    finalStatus.textContent = 'a digitar...';
-    showTyping(finalChatBody);
-
+    showTyping(finalChatBody, finalStatus);
     const msg   = finalMessages[idx];
     const isImg = msg.includes('<img');
     const delay = isImg ? 1600 : Math.min(Math.max(msg.replace(/<[^>]*>/g, '').length * 22, 1400), 4000);
-
     setTimeout(() => {
       removeTyping(finalChatBody);
-      finalStatus.textContent = 'online';
+      if (finalStatus) finalStatus.textContent = 'online';
       addBubbleIn(finalChatBody, msg);
       idx++;
       setTimeout(sendNext, 800);
     }, delay);
   }
-
   sendNext();
 }
