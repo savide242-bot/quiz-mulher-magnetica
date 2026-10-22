@@ -1,45 +1,95 @@
 // ========================
-// PERGUNTAS
+// PERGUNTAS (copiadas da página de referência, adaptadas PT-PT)
 // ========================
 const questions = [
+  // Q1 — IDADE
   {
-    question: "Para começar, diz-me: Qual é a tua idade?",
+    question: "Para começar, diz-me: Qual a tua idade?",
     options: [
-      { text: "18-29 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
-      { text: "30-39 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
-      { text: "40-49 anos", feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." },
-      { text: "50+",        feedback: "Entendi! Vou personalizar o teu plano para o teu momento de vida." }
+      { text: "18-29 anos",  feedback: "" },
+      { text: "30–39 anos",  feedback: "" },
+      { text: "40–49 anos",  feedback: "" },
+      { text: "50+",         feedback: "" }
     ]
   },
+
+  // Q2 — OBJECTIVO PRINCIPAL
   {
-    question: "Responde com sinceridade… Qual é o teu principal objectivo?",
+    question: "Responde com sinceridade…\nQual é o teu principal objectivo?",
     options: [
-      { text: "Atrair o homem certo",   feedback: "Entendi... E isso é totalmente possível quando sabes como a mente dele funciona." },
-      { text: "Deixá-lo obcecado",      feedback: "Entendi... Quando activas os gatilhos certos, é exactamente isso que acontece." },
-      { text: "Casar",                  feedback: "Entendi... E para ele dar esse passo, precisa sentir que tu és a única opção." },
-      { text: "Reacender a paixão",     feedback: "Entendi... Reacender a paixão é mais simples do que parece quando activamos a dopamina." }
+      {
+        text: "Atrair o homem certo",
+        feedback: "Entendi… Então não é simplesmente sobre ter alguém.\n\nQueres conseguir despertar o interesse do homem que realmente desejas."
+      },
+      {
+        text: "Deixá-lo obcecado",
+        feedback: "Entendi… Então não é simplesmente sobre ter alguém.\n\nQueres que ele não consiga parar de pensar em ti — e isso é totalmente possível."
+      },
+      {
+        text: "Casar-se",
+        feedback: "Entendi… Para ele dar esse passo, precisa sentir que tu és a única opção — e há uma forma de activar isso nele."
+      },
+      {
+        text: "Reacender a paixão",
+        feedback: "Entendi… Reacender a paixão é mais simples do que parece quando activamos os gatilhos certos na mente dele."
+      }
     ]
   },
+
+  // Q3 — STATUS DE RELACIONAMENTO
+  {
+    question: "E hoje…\nQual é o teu estado de relacionamento?",
+    options: [
+      { text: "Solteira",                    feedback: "" },
+      { text: "É complicado",                feedback: "" },
+      { text: "Encontro casual / namorando", feedback: "" },
+      { text: "Casada / relacionamento sério", feedback: "" }
+    ]
+  },
+
+  // Q4 — VIDA AMOROSA
   {
     question: "Como te sentes em relação à tua vida amorosa neste momento?",
     options: [
-      { text: "Estou confortável com ela",             feedback: "Mas podemos sempre melhorar e criar uma ligação ainda mais profunda." },
-      { text: "Gostaria de me sentir mais confiante",  feedback: "A confiança natural surge quando dominas a dinâmica da atracção a teu favor." },
-      { text: "Não me sinto amada como gostaria",      feedback: "Entendo. E isso muda completamente quando activamos o instinto de perseguição dele." }
+      {
+        text: "Estou confortável com ela",
+        feedback: "Mas podemos sempre melhorar e criar uma ligação ainda mais profunda."
+      },
+      {
+        text: "Gostaria de me sentir mais confiante",
+        feedback: "Entendi…\n\nPrecisas de saber se estás a agir correctamente… se ele está realmente interessado… ou qual deve ser o teu próximo passo."
+      },
+      {
+        text: "Não me sinto amada como gostaria",
+        feedback: "Entendo. E isso muda completamente quando activamos o instinto de perseguição dele."
+      }
     ]
   },
+
+  // Q5 — FREQUÊNCIA DÁ MAIS DO QUE RECEBE
   {
-    question: "Pensando nas tuas experiências amorosas... Com que frequência sentes que dás mais do que recebes?",
+    question: "Pensando nas tuas experiências amorosas…\n\nCom que frequência sentes que ofereces mais do que recebes?",
     options: [
-      { text: "Muito frequentemente", feedback: "Isso é exaustivo. Mas podes inverter esse jogo e fazê-lo investir mais na relação." },
-      { text: "Às vezes",             feedback: "Entendo. O ideal é que ele esteja sempre focado em agradar-te e conquistar-te." },
-      { text: "Quase nunca",          feedback: "Óptimo. E com as técnicas certas, manterás essa dinâmica a teu favor para sempre." }
+      {
+        text: "Muito frequentemente",
+        feedback: "Isso é exaustivo. Mas podes inverter esse jogo e fazê-lo investir mais na relação."
+      },
+      {
+        text: "Às vezes",
+        feedback: "Entendo. O ideal é que ele esteja sempre focado em agradar-te e conquistar-te."
+      },
+      {
+        text: "Quase nunca",
+        feedback: "Óptimo. E com as técnicas certas, manterás essa dinâmica a teu favor para sempre."
+      }
     ]
   },
+
+  // Q6 — DESAFIOS (multi-select)
   {
     question: "Quais destes desafios sentes na tua vida amorosa?\n(podes escolher mais de um)",
     multiSelect: true,
-    multiSelectFeedback: "Obrigado por partilhares isso comigo. Com base no que me disseste, consigo identificar exactamente o que está a bloquear a tua atracção.",
+    multiSelectFeedback: "Isso acaba levando para uma sensação parecida: não estás a receber do homem a resposta emocional que gostarias.\n\nSeja atenção… desejo… saudade… iniciativa… ou simplesmente sentir que és importante para ele…\n\nMas 8 em cada 10 mulheres notam mudanças já nos primeiros dias quando aprendem a activar o gatilho da dopamina nele…\n\nPois é o único jeito de o deixar completamente louco por ti.",
     options: [
       { text: "Valorizo mais ele do que a mim própria" },
       { text: "Sou rejeitada" },
@@ -48,41 +98,69 @@ const questions = [
       { text: "Sinto que a paixão acabou" }
     ]
   },
+
+  // Q7 — ÚLTIMA VEZ AMADA
   {
     question: "Qual foi a última vez que te sentiste realmente amada e valorizada numa relação?",
     options: [
-      { text: "Recentemente",   feedback: "Entendi... E manter essa sensação é o segredo para uma relação duradoura." },
-      { text: "Há muito tempo", feedback: "Entendi... E essa sensação pesa. Porque não é só querer ter alguém — é querer sentir que existe alguém do outro lado." },
-      { text: "Nunca",          feedback: "Entendi... E essa sensação pesa. Porque não é só querer ter alguém. É querer sentir que existe alguém do outro lado que também te escolhe, valoriza e deseja." }
+      {
+        text: "Menos de 1 ano atrás",
+        feedback: "Entendi… E manter essa sensação é o segredo para uma relação duradoura."
+      },
+      {
+        text: "Entre 1 e 2 anos atrás",
+        feedback: "Entendi… E essa sensação pesa. Porque não é só querer ter alguém — é querer sentir que existe alguém do outro lado."
+      },
+      {
+        text: "Há mais de 3 anos atrás",
+        feedback: "Entendi… E essa sensação pesa. Porque não é só querer ter alguém. É querer sentir que existe alguém do outro lado que também te escolhe, valoriza e deseja."
+      },
+      {
+        text: "Nunca",
+        feedback: "Entendi… E essa sensação pesa muito. Porque não é só querer ter alguém. É querer sentir que existe alguém do outro lado que também te escolhe, valoriza e deseja — e isso é absolutamente possível para ti."
+      }
     ]
   },
-  {
-    question: "Pensando no homem ideal para ti...\n\nQual destas qualidades é a mais importante?",
-    options: [
-      { text: "Gentil",                 feedback: "Uma óptima escolha. Mas para que ele o demonstre de forma consistente, o instinto de provedor dele precisa de ser activado." },
-      { text: "Fiel",                   feedback: "A fidelidade é garantida quando ele não consegue pensar em mais nenhuma outra mulher além de ti." },
-      { text: "Carinhoso",              feedback: "Os homens tornam-se naturalmente carinhosos quando os gatilhos emocionais certos são accionados." },
-      { text: "Que me apoie",           feedback: "O apoio incondicional surge quando ele te vê como a prioridade número 1 da vida dele." },
-      { text: "Voltado para a família", feedback: "Um homem focado na família fará tudo para te proteger e estar ao teu lado." }
-    ]
-  },
+
+  // Q8 — CONTROLO / INFLUÊNCIA
   {
     question: "Gostavas de ter mais influência sobre os homens?",
     options: [
-      { text: "Claro que sim",         feedback: "Faz ele escolher-te todos os dias! Quando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo." },
-      { text: "Não tenho a certeza",   feedback: "Ter influência não é manipular — é saber exactamente como o cérebro dele funciona para que ele te escolha todos os dias." },
-      { text: "Não",                   feedback: "Mesmo que não queiras influência, perceber como a mente dele funciona evita que te magoem no futuro." }
+      {
+        text: "Claro que sim",
+        feedback: "Faz ele escolher-te todos os dias! Quando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      },
+      {
+        text: "Sim, mas com condições",
+        feedback: "Ter influência não é manipular — é saber exactamente como o cérebro dele funciona para que ele te escolha todos os dias."
+      }
     ]
   },
+
+  // Q9 — HOMEM IDEAL
   {
-    question: "Quais destas estratégias gostavas mais de aprender?\n(podes escolher mais de uma)",
-    multiSelect: true,
-    multiSelectFeedback: "Perfeito. Tenho exactamente o que precisas.",
+    question: "Pensando no homem ideal para ti…\n\nQual destas qualidades é a mais importante?",
     options: [
-      { text: "Como fazer ele sentir a minha falta" },
-      { text: "Como fazer ele apegar-se a mim" },
-      { text: "Como fazer ele ser mais proactivo comigo" },
-      { text: "Como perceber melhor o que ele está a pensar" }
+      {
+        text: "Gentil",
+        feedback: "Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      },
+      {
+        text: "Fiel",
+        feedback: "Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      },
+      {
+        text: "Carinhoso",
+        feedback: "Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      },
+      {
+        text: "Que me apoie",
+        feedback: "Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      },
+      {
+        text: "Voltado para a família",
+        feedback: "Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido."
+      }
     ]
   }
 ];
@@ -91,12 +169,12 @@ const questions = [
 // MENSAGENS FINAIS
 // ========================
 const finalMessages = [
-  "Muitas das mulheres que estavam numa situação semelhante à tua... seguiram o Plano Mulher Magnética e deixaram o homem obcecado por elas — em menos de 14 dias!",
+  "Muitas das mulheres que estavam numa situação semelhante à tua… seguiram o Plano Mulher Magnética e deixaram o homem obcecado por elas — em menos de 14 dias!",
   "<img src='depoimento1.jpg' style='width:100%;max-width:250px;border-radius:8px;display:block;'>",
   "<img src='depoimento2.jpg' style='width:100%;max-width:250px;border-radius:8px;display:block;'>",
   "<img src='depoimento3.jpg' style='width:100%;max-width:250px;border-radius:8px;display:block;'>",
-  "Como viste...<br><br>Mulheres que aplicam o Plano Mulher Magnética aprendem a usar o gatilho de dopamina da forma certa... e com isso deixam qualquer homem louco por elas — sem precisar de implorar atenção.",
-  "Muitas relatam que, quando aplicam o plano...",
+  "Como viste…<br><br>Mulheres que aplicam o Plano Mulher Magnética aprendem a usar o gatilho de dopamina da forma certa… e com isso deixam qualquer homem louco por elas — sem precisar de implorar atenção.",
+  "Muitas relatam que, quando aplicam o plano…",
   "Eles próprios voltam a procurá-las, demonstrando mais interesse, saudade e vontade de se aproximar."
 ];
 
@@ -108,14 +186,14 @@ let currentQuestionIndex = 0;
 // ========================
 // ELEMENTOS DOM
 // ========================
-const chatArea       = document.getElementById('chat-area');
-const optionsPanel   = document.getElementById('options-panel');
-const waStatus       = document.getElementById('wa-status');
-const progressBar    = document.getElementById('progress-bar');
-const finalScreen    = document.getElementById('final-screen');
-const finalChatBody  = document.getElementById('final-chat-body');
-const finalChatFooter= document.getElementById('final-chat-footer');
-const finalStatus    = document.getElementById('final-status');
+const chatArea        = document.getElementById('chat-area');
+const optionsPanel    = document.getElementById('options-panel');
+const waStatus        = document.getElementById('wa-status');
+const progressBar     = document.getElementById('progress-bar');
+const finalScreen     = document.getElementById('final-screen');
+const finalChatBody   = document.getElementById('final-chat-body');
+const finalChatFooter = document.getElementById('final-chat-footer');
+const finalStatus     = document.getElementById('final-status');
 
 // ========================
 // UTILS
@@ -139,7 +217,7 @@ function addBubbleIn(container, html) {
     div.style.padding = '0';
     div.innerHTML = html;
   } else {
-    div.innerHTML = html + `<div class="bubble-time">${getTime()}</div>`;
+    div.innerHTML = html.replace(/\n/g, '<br>') + `<div class="bubble-time">${getTime()}</div>`;
   }
   container.appendChild(div);
   scrollBottom(container);
@@ -170,21 +248,29 @@ function removeTyping(container) {
 }
 
 // ========================
-// INÍCIO DA PÁGINA
+// INÍCIO — Mensagem de boas-vindas
 // ========================
 window.addEventListener('load', () => {
-  // Mostrar mensagem de boas-vindas após 600ms
   setTimeout(() => {
     showTyping(chatArea, waStatus);
     setTimeout(() => {
       removeTyping(chatArea);
       if (waStatus) waStatus.textContent = 'online';
       addBubbleIn(chatArea,
-        "Olá! 👋<br><br>Sou o <strong>Dr. António Figueiredo</strong>, especialista em psicologia do relacionamento.<br><br>Criei uma avaliação rápida (menos de 2 minutos) que vai ajudar-te a perceber o que está a impedir o teu amor de florescer — e o que podes fazer <em>hoje</em> para mudar isso."
+        'Use nele o <strong>"gatilho de dopamina"</strong> para <strong>aumentar a atracção dele em ti,</strong> e fazer ele <strong>sentir a tua falta.</strong>\n\nClica abaixo, faz o <strong>teste grátis de 1 minuto</strong> e aprende…'
       );
-      // Mostrar botão de início
-      renderStartButton();
-    }, 2200);
+      setTimeout(() => {
+        showTyping(chatArea, waStatus);
+        setTimeout(() => {
+          removeTyping(chatArea);
+          if (waStatus) waStatus.textContent = 'online';
+          addBubbleIn(chatArea,
+            'Olá, sou o Dr. António Figueiredo — <strong>especialista em psicologia de relacionamentos</strong> há mais de 15 anos.\n\nJá ajudei <strong>mais de 7.600 mulheres</strong> a <strong>fazer o homem certo ficar obcecado por elas</strong> com este método.\n\nResponde-me algumas <strong>perguntas rápidas</strong> para eu entender o teu caso e poder ensinar-te também!'
+          );
+          renderStartButton();
+        }, 2000);
+      }, 800);
+    }, 1800);
   }, 600);
 });
 
@@ -192,7 +278,7 @@ function renderStartButton() {
   optionsPanel.innerHTML = '';
   const btn = document.createElement('button');
   btn.className = 'btn-start-chat';
-  btn.textContent = '👉 COMEÇAR TESTE GRÁTIS';
+  btn.textContent = 'Continuar';
   btn.addEventListener('click', startQuiz);
   optionsPanel.appendChild(btn);
 }
@@ -201,14 +287,9 @@ function renderStartButton() {
 // INICIAR QUIZ
 // ========================
 function startQuiz() {
-  // Adicionar bolha de resposta do utilizador
-  addBubbleOut(chatArea, '👉 COMEÇAR TESTE GRÁTIS');
+  addBubbleOut(chatArea, 'Continuar');
   optionsPanel.innerHTML = '';
-
-  // Pequena pausa antes de carregar a primeira pergunta
-  setTimeout(() => {
-    loadQuestion();
-  }, 500);
+  setTimeout(() => loadQuestion(), 500);
 }
 
 // ========================
@@ -228,7 +309,7 @@ function loadQuestion() {
   showTyping(chatArea, waStatus);
 
   const cleanText = q.question.replace(/<[^>]*>/g, '');
-  const delay = Math.min(Math.max(cleanText.length * 18, 1000), 2500);
+  const delay = Math.min(Math.max(cleanText.length * 18, 900), 2200);
 
   setTimeout(() => {
     removeTyping(chatArea);
@@ -284,12 +365,12 @@ function syncConfirmBtn(q) {
 function handleAnswer(selectedOption) {
   optionsPanel.innerHTML = '';
 
-  // Bolha verde da utilizadora (direita)
+  // Bolha verde (resposta da utilizadora)
   addBubbleOut(chatArea, selectedOption.text || 'Continuar');
 
   if (selectedOption.feedback && selectedOption.feedback.trim() !== '') {
     showTyping(chatArea, waStatus);
-    const delay = Math.min(Math.max(selectedOption.feedback.length * 22, 1200), 3000);
+    const delay = Math.min(Math.max(selectedOption.feedback.replace(/<[^>]*>/g,'').length * 20, 1200), 3200);
 
     setTimeout(() => {
       removeTyping(chatArea);
@@ -307,19 +388,19 @@ function handleAnswer(selectedOption) {
       currentQuestionIndex++;
       if (currentQuestionIndex < questions.length) loadQuestion();
       else finishQuiz();
-    }, 600);
+    }, 500);
   }
 }
 
 // ========================
-// FINALIZAR QUIZ → ECRÃ FINAL
+// FINALIZAR → ECRÃ FINAL
 // ========================
 function finishQuiz() {
   if (progressBar) progressBar.style.width = '100%';
 
-  // Mostrar ecrã final directamente (sem processamento)
-  finalScreen.style.display = 'flex';
+  // Esconder chat principal, mostrar ecrã final
   document.querySelector('.app-container').style.display = 'none';
+  finalScreen.style.display = 'flex';
 
   setTimeout(runFinalChat, 400);
 }
@@ -340,13 +421,15 @@ function runFinalChat() {
     showTyping(finalChatBody, finalStatus);
     const msg   = finalMessages[idx];
     const isImg = msg.includes('<img');
-    const delay = isImg ? 1600 : Math.min(Math.max(msg.replace(/<[^>]*>/g, '').length * 22, 1400), 4000);
+    const delay = isImg
+      ? 1400
+      : Math.min(Math.max(msg.replace(/<[^>]*>/g, '').length * 20, 1200), 4000);
     setTimeout(() => {
       removeTyping(finalChatBody);
       if (finalStatus) finalStatus.textContent = 'online';
       addBubbleIn(finalChatBody, msg);
       idx++;
-      setTimeout(sendNext, 800);
+      setTimeout(sendNext, 700);
     }, delay);
   }
 
