@@ -259,17 +259,7 @@ window.addEventListener('load', () => {
       addBubbleIn(chatArea,
         'Use nele o <strong>"gatilho de dopamina"</strong> para <strong>aumentar a atracção dele em ti,</strong> e fazer ele <strong>sentir a tua falta.</strong>\n\nClica abaixo, faz o <strong>teste grátis de 1 minuto</strong> e aprende…'
       );
-      setTimeout(() => {
-        showTyping(chatArea, waStatus);
-        setTimeout(() => {
-          removeTyping(chatArea);
-          if (waStatus) waStatus.textContent = 'online';
-          addBubbleIn(chatArea,
-            'Olá, sou o Dr. António Figueiredo — <strong>especialista em psicologia de relacionamentos</strong> há mais de 15 anos.\n\nJá ajudei <strong>mais de 7.600 mulheres</strong> a <strong>fazer o homem certo ficar obcecado por elas</strong> com este método.\n\nResponde-me algumas <strong>perguntas rápidas</strong> para eu entender o teu caso e poder ensinar-te também!'
-          );
-          renderStartButton();
-        }, 2000);
-      }, 800);
+      renderStartButton();
     }, 1800);
   }, 600);
 });
