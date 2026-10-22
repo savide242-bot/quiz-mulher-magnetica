@@ -15,7 +15,21 @@ function getTime() {
   const n = new Date();
   return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 }
-function scrollBottom() { chatArea.scrollTop = chatArea.scrollHeight; }
+function scrollToEl(el) {
+  // Garante que o elemento fica visivel acima do painel de opcoes
+  setTimeout(function() {
+    var panelH = optionsPanel ? optionsPanel.offsetHeight : 0;
+    var elBottom = el.offsetTop + el.offsetHeight;
+    var target = elBottom - chatArea.clientHeight + panelH + 16;
+    if (target > chatArea.scrollTop) {
+      chatArea.scrollTo({ top: target, behavior: 'smooth' });
+    }
+  }, 30);
+}
+function scrollBottom() {
+  var panelH = optionsPanel ? optionsPanel.offsetHeight : 0;
+  chatArea.scrollTo({ top: chatArea.scrollHeight + panelH, behavior: 'smooth' });
+}
 
 function addBubbleIn(html) {
   const isImg = html.includes('<img');
@@ -28,14 +42,14 @@ function addBubbleIn(html) {
     div.innerHTML = html.replace(/\n/g, '<br>') + `<div class="bubble-time">${getTime()}</div>`;
   }
   chatArea.appendChild(div);
-  scrollBottom();
+  scrollToEl(div);
 }
 function addBubbleOut(text) {
   const div = document.createElement('div');
   div.className = 'bubble-out';
   div.innerHTML = text.replace(/\n/g, '<br>') + `<div class="bubble-time">${getTime()}</div>`;
   chatArea.appendChild(div);
-  scrollBottom();
+  scrollToEl(div);
 }
 function showTyping() {
   removeTyping();
@@ -45,7 +59,7 @@ function showTyping() {
   div.className = 'bubble-typing';
   div.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
   chatArea.appendChild(div);
-  scrollBottom();
+  scrollToEl(div);
 }
 function removeTyping() {
   const t = document.getElementById('typing-indicator');
@@ -102,6 +116,7 @@ function showButton(text, cb) {
     setTimeout(cb, 500);
   });
   optionsPanel.appendChild(btn);
+  scrollBottom();
 }
 
 // Opções pill verdes com feedback opcional
@@ -125,6 +140,7 @@ function showOptions(options, cb) {
     });
     optionsPanel.appendChild(btn);
   });
+  scrollBottom();
 }
 
 // Multi-select com checkboxes
@@ -158,6 +174,7 @@ function showMultiSelect(options, feedbackBubbles, cb) {
     }
   });
   optionsPanel.appendChild(confirm);
+  scrollBottom();
 }
 
 function next() {
