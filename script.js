@@ -1,5 +1,5 @@
 // ================================================================
-// FLUXO COMPLETO — chat contínuo, sem mudar de ecrã
+// FLUXO COMPLETO, chat contínuo, sem mudar de ecrã
 // ================================================================
 
 // ========================
@@ -170,7 +170,7 @@ function next() {
 // ========================
 const flowDefs = [
 
-  // 0 — Headline dopamina
+  // 0, Headline dopamina
   function() {
     showTyping();
     setTimeout(() => {
@@ -180,14 +180,14 @@ const flowDefs = [
     }, 1800);
   },
 
-  // 1 — Intro do doutor
+  // 1, Intro do doutor
   function() {
     showBubbles([
-      'Olá, sou o Dr. António Figueiredo — <strong>especialista em psicologia de relacionamentos</strong> há mais de 15 anos.\n\nJá ajudei <strong>mais de 7.600 mulheres</strong> a <strong>fazer o homem certo ficar obcecado por elas</strong> com este método.\n\nResponde-me algumas <strong>perguntas rápidas</strong> para eu entender o teu caso e poder ensinar-te também!'
+      'Olá, sou o Dr. António Figueiredo, <strong>especialista em psicologia de relacionamentos</strong> há mais de 15 anos.\n\nJá ajudei <strong>mais de 1000 mulheres</strong> a <strong>fazer o homem certo ficar obcecado por elas</strong> com este método.\n\nResponde-me algumas <strong>perguntas rápidas</strong> para eu entender o teu caso e poder ensinar-te também!'
     ], () => showButton('Continuar', next));
   },
 
-  // 2 — Q1: Idade
+  // 2, Q1: Idade
   function() {
     showBubbles(['Para começar, diz-me: Qual a tua idade?'], () => {
       showOptions([
@@ -199,23 +199,23 @@ const flowDefs = [
     });
   },
 
-  // 3 — Q2: Objectivo
+  // 3, Q2: Objectivo
   function() {
     showBubbles(['Responde com sinceridade…\nQual é o teu principal objectivo?'], () => {
       showOptions([
         { text: 'Atrair o homem certo',
           feedback: 'Entendi…\n\nEntão não é simplesmente sobre ter alguém.\n\nQueres conseguir despertar o interesse do homem que realmente desejas.' },
         { text: 'Deixá-lo obcecado',
-          feedback: 'Entendi…\n\nEntão não é simplesmente sobre ter alguém.\n\nQueres que ele não consiga parar de pensar em ti — e isso é totalmente possível.' },
+          feedback: 'Entendi…\n\nEntão não é simplesmente sobre ter alguém.\n\nQueres que ele não consiga parar de pensar em ti, e isso é totalmente possível.' },
         { text: 'Casar-se',
-          feedback: 'Entendi…\n\nPara ele dar esse passo, precisa sentir que tu és a única opção — e há uma forma de activar isso nele.' },
+          feedback: 'Entendi…\n\nPara ele dar esse passo, precisa sentir que tu és a única opção, e há uma forma de activar isso nele.' },
         { text: 'Reacender a paixão',
           feedback: 'Entendi…\n\nEntão em algum momento já existiu uma ligação mais forte…\n\ne hoje gostavas de sentir aquela intensidade de novo.' }
       ], next);
     });
   },
 
-  // 4 — Q3: Estado de relacionamento
+  // 4, Q3: Estado de relacionamento
   function() {
     showBubbles(['E hoje…\nQual é o teu estado de relacionamento?'], () => {
       showOptions([
@@ -227,7 +227,7 @@ const flowDefs = [
     });
   },
 
-  // 5 — Q4: Vida amorosa
+  // 5, Q4: Vida amorosa
   function() {
     showBubbles(['Como te sentes em relação à tua vida amorosa neste momento?'], () => {
       showOptions([
@@ -241,7 +241,7 @@ const flowDefs = [
     });
   },
 
-  // 6 — Q5: Frequência dá mais do que recebe
+  // 6, Q5: Frequência dá mais do que recebe
   function() {
     showBubbles(['Pensando nas tuas experiências amorosas…\n\nCom que frequência sentes que ofereces mais do que recebes?'], () => {
       showOptions([
@@ -252,7 +252,7 @@ const flowDefs = [
     });
   },
 
-  // 7 — Q6: Desafios (multi-select)
+  // 7, Q6: Desafios (multi-select)
   function() {
     showBubbles(['Quais destes desafios sentes na tua vida amorosa?\n(podes escolher mais de um)'], () => {
       showMultiSelect(
@@ -272,7 +272,7 @@ const flowDefs = [
     });
   },
 
-  // 8 — Q7: Última vez amada
+  // 8, Q7: Última vez amada
   function() {
     showBubbles(['Qual foi a última vez que te sentiste realmente amada e valorizada numa relação?'], () => {
       showOptions([
@@ -284,7 +284,7 @@ const flowDefs = [
     });
   },
 
-  // 9 — Q8: Influência
+  // 9, Q8: Influência
   function() {
     showBubbles(['Gostavas de ter mais influência sobre os homens?'], () => {
       showOptions([
@@ -294,7 +294,7 @@ const flowDefs = [
     });
   },
 
-  // 10 — Q9: Homem ideal → feedback → Continuar
+  // 10, Q9: Homem ideal → feedback → Continuar
   function() {
     const fb = 'Faz ele escolher-te todos os dias!\n\nQuando activas os gatilhos de dopamina nele, ele começa a pensar em ti o tempo todo, querer realizar os teus desejos e permanecer completamente comprometido.';
     showBubbles(['Pensando no homem ideal para ti…\n\nQual destas qualidades é a mais importante?'], () => {
@@ -308,7 +308,7 @@ const flowDefs = [
     });
   },
 
-  // 11 — Q10: Quão bem entendes os homens
+  // 11, Q10: Quão bem entendes os homens
   function() {
     showBubbles(['Quão bem achas que entendes os homens?'], () => {
       showOptions([
@@ -316,13 +316,13 @@ const flowDefs = [
           feedback: 'E essa falta de clareza costuma gerar muita confusão e ansiedade.\n\nPorque quando não entendes o comportamento…\n\nqualquer silêncio, mensagem ou mudança parece carregar algum significado oculto.' },
         { text: 'Às vezes é difícil entender o que ele está a pensar',
           feedback: 'E essa falta de clareza costuma gerar muita confusão e ansiedade.\n\nPorque quando não entendes o comportamento…\n\nqualquer silêncio, mensagem ou mudança parece carregar algum significado oculto.' },
-        { text: 'Muito bem — quase leio a mente deles',
+        { text: 'Muito bem, quase leio a mente deles',
           feedback: 'Mesmo entendendo alguma coisa, há sempre camadas mais profundas na mente dele que podem surpreender-te.' }
       ], next);
     });
   },
 
-  // 12 — Dopamina: pergunta com opções
+  // 12, Dopamina: pergunta com opções
   function() {
     showBubbles(['Sabias que aumentar a dopamina dele pode fazer com que ele sinta a tua falta?'], () => {
       showOptions([
@@ -332,10 +332,10 @@ const flowDefs = [
     });
   },
 
-  // 13 — Ciência da dopamina + recompensas: pergunta com 3 opções
+  // 13, Ciência da dopamina + recompensas: pergunta com 3 opções
   function() {
     showBubbles([
-      'Estudos científicos revelam que a dopamina — o hormônio do desejo, alimenta a excitação dele.\n\nAo activar os gatilhos de dopamina, ele vai desejar a tua atenção e aprofundar a ligação.',
+      'Estudos científicos revelam que a dopamina, o hormônio do desejo, alimenta a excitação dele.\n\nAo activar os gatilhos de dopamina, ele vai desejar a tua atenção e aprofundar a ligação.',
       'Sabias que pequenas recompensas podem mantê-lo a pensar em ti?'
     ], () => {
       showOptions([
@@ -346,7 +346,7 @@ const flowDefs = [
     });
   },
 
-  // 14 — Q11: Estratégias (multi-select)
+  // 14, Q11: Estratégias (multi-select)
   function() {
     showBubbles(['Quais destas estratégias gostavas mais de aprender?\n(podes escolher mais de uma)'], () => {
       showMultiSelect(
@@ -362,7 +362,7 @@ const flowDefs = [
     });
   },
 
-  // 15 — Q12: Quão pronta estás
+  // 15, Q12: Quão pronta estás
   function() {
     showBubbles(['Quão pronta estás para transformar a tua vida amorosa?'], () => {
       showOptions([
@@ -373,7 +373,7 @@ const flowDefs = [
     });
   },
 
-  // 16 — 94% + comprometimento (com opções)
+  // 16, 94% + comprometimento (com opções)
   function() {
     showBubbles([
       '<strong>94% das mulheres</strong> que usam estes gatilhos de dopamina despertaram atracção e comprometimento em apenas algumas semanas!'
@@ -389,7 +389,7 @@ const flowDefs = [
     });
   },
 
-  // 17 — Análise + solução
+  // 17, Análise + solução
   function() {
     showBubbles([
       '⚠️ <strong>Análise concluída.</strong>\n\nPelas tuas respostas, identifiquei o teu perfil e tens um potencial muito alto.',
@@ -401,26 +401,26 @@ const flowDefs = [
     ], () => showButton('Continuar', next));
   },
 
-  // 18 — Benefícios
+  // 18, Benefícios
   function() {
     showBubbles([
       'Vê alguns dos benefícios que vais ter com o Plano Mulher Magnética:\n\n✅ Fazer ele sentir a tua falta\n✅ Aumentar a atracção dele por ti\n✅ Fazer ele pensar em ti como nunca\n✅ Fazer ele querer procurar-te e tomar iniciativa\n✅ Aumentar o desejo e a ligação\n✅ Fazer ele querer ficar cada vez mais perto de ti\n✅ Tornares-te a única opção\n✅ Tornares-te inesquecível'
     ], () => showButton('Continuar', next));
   },
 
-  // 19 — 94% + depoimentos
+  // 19, 94% + depoimentos
   function() {
     showBubbles([
-      '<strong>94% das mulheres</strong> que estavam numa situação semelhante à tua…\n\nseguiram o Plano Mulher Magnética e deixaram o homem obcecado por elas — em menos de 14 dias!',
+      '<strong>94% das mulheres</strong> que estavam numa situação semelhante à tua…\n\nseguiram o Plano Mulher Magnética e deixaram o homem obcecado por elas, em menos de 14 dias!',
       '<img src="depoimento1.jpg" style="width:100%;max-width:250px;border-radius:8px;display:block;">',
       '<img src="depoimento2.jpg" style="width:100%;max-width:250px;border-radius:8px;display:block;">',
       '<img src="depoimento3.jpg" style="width:100%;max-width:250px;border-radius:8px;display:block;">',
-      'Como viste…\n\nMulheres que aplicam o Plano Mulher Magnética aprendem a usar o gatilho de dopamina da forma certa…\n\ne com isso deixam qualquer homem louco por elas — sem precisar de implorar atenção.',
+      'Como viste…\n\nMulheres que aplicam o Plano Mulher Magnética aprendem a usar o gatilho de dopamina da forma certa…\n\ne com isso deixam qualquer homem louco por elas, sem precisar de implorar atenção.',
       'Muitas relatam que, quando aplicam o plano…\n\nEles próprios voltam a procurá-las, demonstrando mais interesse, saudade e vontade de se aproximar.'
     ], () => showButton('Sim, eu quero esses resultados!', next));
   },
 
-  // 20 — Parabéns + timeline
+  // 20, Parabéns + timeline
   function() {
     showBubbles([
       'Ótimo! Parabéns por esta decisão.\n\nVais também ter óptimos resultados com o Plano Mulher Magnética!',
@@ -434,7 +434,7 @@ const flowDefs = [
     ], () => showButton('Sim, eu quero isso!', next));
   },
 
-  // 21 — O que recebes + botão "Quero o meu plano!"
+  // 21, O que recebes + botão "Quero o meu plano!"
   function() {
     showBubbles([
       '📋 <strong>O QUE RECEBES HOJE:</strong>\n\n✅ Plano Mulher Magnética\n✅ Truques para disparar dopamina e fazê-lo sentir saudades\n✅ Métodos para aumentar a atracção e lealdade dele\n✅ Dicas de especialistas para elevar os hormônios do amor dele\n✅ Estratégias para deixá-lo obcecado por ti\n✅ Técnicas poderosas para magnetizá-lo\n✅ Como aplicar o plano mesmo estando longe dele\n✅ Acesso imediato\n✅ Acesso vitalício ao plano',
@@ -442,13 +442,13 @@ const flowDefs = [
     ], () => showButton('Quero o meu plano!', next));
   },
 
-  // 22 — Bónus + preço + garantia → CTA final
+  // 22, Bónus + preço + garantia → CTA final
   function() {
     showBubbles([
       'Ok! E além do teu plano…\n\nVou dar-te mais <strong>4 bónus exclusivos</strong> hoje…',
-      '🎁 <strong>#BÓNUS 1 — Guia dos 7 Erros Que Fazem Ele Perder o Interesse</strong>\n\nDescobre os principais erros que podem diminuir a atracção e fazer um homem afastar-se… e o que fazer em vez disso.\n\nDe <s>19,90€</s> por: <strong>GRÁTIS</strong>',
-      '🎁 <strong>#BÓNUS 2 — Como Ler os Sinais de Interesse Dele</strong>\n\nAprende a identificar quando um homem está realmente interessado… e reconhece os sinais que mostram quando é hora de te aproximar ou dar espaço.\n\nDe <s>29,90€</s> por: <strong>GRÁTIS</strong>',
-      '🎁 <strong>#BÓNUS 3 — Manual da Mulher Inesquecível</strong>\n\nMelhora a aparência e autoestima, para ele ficar ainda mais louco de desejo por ti.\n\nDe <s>27,90€</s> por: <strong>GRÁTIS</strong>',
+      '🎁 <strong>#BÓNUS 1, Guia dos 7 Erros Que Fazem Ele Perder o Interesse</strong>\n\nDescobre os principais erros que podem diminuir a atracção e fazer um homem afastar-se… e o que fazer em vez disso.\n\nDe <s>19,90€</s> por: <strong>GRÁTIS</strong>',
+      '🎁 <strong>#BÓNUS 2, Como Ler os Sinais de Interesse Dele</strong>\n\nAprende a identificar quando um homem está realmente interessado… e reconhece os sinais que mostram quando é hora de te aproximar ou dar espaço.\n\nDe <s>29,90€</s> por: <strong>GRÁTIS</strong>',
+      '🎁 <strong>#BÓNUS 3, Manual da Mulher Inesquecível</strong>\n\nMelhora a aparência e autoestima, para ele ficar ainda mais louco de desejo por ti.\n\nDe <s>27,90€</s> por: <strong>GRÁTIS</strong>',
       '<strong>QUANTO CUSTA TUDO ISSO?</strong>\n\n✅ Plano Mulher Magnética\n✅ Aplicativo completo com desafios, checklist, aulas\n✅ Truques para activar dopamina e fazê-lo sentir saudades\n✅ Métodos para aumentar a atracção e lealdade dele\n✅ Dicas de especialistas para elevar os hormônios do amor dele\n✅ Estratégias para deixá-lo obcecado por ti\n✅ Técnicas poderosas para magnetizá-lo\n✅ Como aplicar o plano mesmo estando longe dele\n✅ Guia dos 7 erros que fazem ele se afastar\n✅ Como ler os sinais de interesse dele\n✅ Manual da Mulher Inesquecível\n✅ Acesso imediato\n✅ Suporte e tira-dúvidas exclusivo\n✅ Acesso vitalício',
       'Tudo isso acima de: <s>197€</s>\n\n<strong>HOJE por apenas: 4,24€</strong>\n\nSim, menos que o preço de um café.\n\nComo a minha missão é ajudar…\n\n🔥 Hoje, vou liberar apenas 5 vagas por esse valor promocional! ⏰',
       '✅ E ainda, tens <strong>30 dias de garantia de reembolso.</strong>\n\nSe por qualquer motivo achares que o plano não é para ti, basta solicitar o reembolso que devolvo 100% do teu investimento.\n\nSimples assim. O risco é todo meu. O teu risco é zero.',
