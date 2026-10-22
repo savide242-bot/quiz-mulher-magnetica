@@ -443,8 +443,7 @@ const flowDefs = [
 function showFinalCTA() {
   if (progressBar) progressBar.style.width = '100%';
   optionsPanel.innerHTML = '';
-  optionsPanel.style.flexDirection = 'column';
-  optionsPanel.style.gap = '10px';
+  optionsPanel.classList.add('cta-mode');
 
   const link = document.createElement('a');
   link.href = 'https://pay.hotmart.com/P108134502G?off=vlywnk0c&checkoutMode=10&bid=1792620514757';

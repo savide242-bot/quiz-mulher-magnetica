@@ -13,9 +13,7 @@
 </head>
 <body>
 
-  <!-- ================================================ -->
-  <!-- ÚNICO ECRÃ DE CHAT (home + quiz num só chat)     -->
-  <!-- ================================================ -->
+  <!-- Chat único — tudo aqui, sem mudar de ecrã -->
   <div class="app-container">
 
     <!-- Header WhatsApp -->
@@ -38,57 +36,21 @@
       </div>
     </header>
 
-    <!-- Barra de progresso (escondida no início) -->
+    <!-- Barra de progresso -->
     <div class="progress-wrap"><div id="progress-bar" class="progress-bar"></div></div>
 
-    <!-- Área de mensagens — tudo aqui, sem mudar de ecrã -->
+    <!-- Área de mensagens — tudo aqui -->
     <main class="chat-scroll-area" id="chat-area">
       <div class="encryption-notice">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
         <span>As mensagens são protegidas com criptografia de ponta a ponta.</span>
       </div>
       <div class="date-divider">HOJE</div>
-      <!-- Todas as mensagens injectadas via JS -->
+      <!-- Mensagens injectadas via JS -->
     </main>
 
-    <!-- Painel inferior: botão início ou opções do quiz -->
+    <!-- Painel inferior: botões / CTA -->
     <footer class="options-panel" id="options-panel"></footer>
-
-  </div>
-
-  <!-- ================================================ -->
-  <!-- TELA FINAL (depoimentos + oferta)                -->
-  <!-- ================================================ -->
-  <div class="app-container" id="final-screen" style="display:none; position:fixed; inset:0; z-index:100;">
-
-    <header class="wa-header">
-      <div class="wa-header-left">
-        <div class="wa-back-btn">&#8592;</div>
-        <div class="wa-avatar-wrapper">
-          <img src="doctor_avatar.jpg" alt="Dr. António">
-          <span class="online-dot"></span>
-        </div>
-        <div class="wa-contact-info">
-          <span class="wa-contact-name">Dr. António Figueiredo</span>
-          <span class="wa-status" id="final-status">online</span>
-        </div>
-      </div>
-    </header>
-
-    <main class="chat-scroll-area" id="final-chat-body">
-      <div class="date-divider">HOJE</div>
-    </main>
-
-    <footer class="options-panel" id="final-chat-footer" style="display:none; flex-direction:column; gap:10px;">
-      <a href="https://pay.hotmart.com/P108134502G?off=vlywnk0c&checkoutMode=10&bid=1792620514757" class="cta-green pulse-anim" target="_blank">
-        Quero o meu plano agora ➔
-      </a>
-      <div class="price-box">
-        <span class="price-main">4,24 €</span>
-        <span class="price-vat">IVA Incluído (0,24 €)</span>
-      </div>
-      <p class="guarantee-txt">🛡️ Garantia de 30 dias · Pagamento 100% seguro</p>
-    </footer>
 
   </div>
 

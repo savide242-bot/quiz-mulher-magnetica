@@ -311,6 +311,13 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
+  /* Quando JS muda para coluna (CTA final) */
+  transition: none;
+}
+.options-panel.cta-mode {
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding: 14px 14px 24px;
 }
 
 .option-btn {
