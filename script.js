@@ -16,19 +16,19 @@ function getTime() {
   return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 }
 function scrollToEl(el) {
-  // Garante que o elemento fica visivel acima do painel de opcoes
+  // Use getBoundingClientRect — works reliably on all mobile browsers
   setTimeout(function() {
-    var panelH = optionsPanel ? optionsPanel.offsetHeight : 0;
-    var elBottom = el.offsetTop + el.offsetHeight;
-    var target = elBottom - chatArea.clientHeight + panelH + 16;
-    if (target > chatArea.scrollTop) {
-      chatArea.scrollTo({ top: target, behavior: 'smooth' });
+    var elRect   = el.getBoundingClientRect();
+    var areaRect = chatArea.getBoundingClientRect();
+    // If bottom of element is below bottom of chat area, scroll it into view
+    if (elRect.bottom > areaRect.bottom - 4) {
+      chatArea.scrollTop += (elRect.bottom - areaRect.bottom) + 16;
     }
-  }, 30);
+  }, 50);
 }
 function scrollBottom() {
-  var panelH = optionsPanel ? optionsPanel.offsetHeight : 0;
-  chatArea.scrollTo({ top: chatArea.scrollHeight + panelH, behavior: 'smooth' });
+  // Scroll chat area to absolute bottom
+  chatArea.scrollTop = chatArea.scrollHeight;
 }
 
 function addBubbleIn(html) {

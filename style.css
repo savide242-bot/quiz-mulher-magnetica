@@ -20,7 +20,9 @@
 
 body {
   background: #111B21;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden; /* page never scrolls */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -79,11 +81,13 @@ body {
 .app-container {
   width: 100%;
   max-width: 480px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport — respects mobile browser chrome */
   display: flex;
   flex-direction: column;
   background: var(--wa-bg);
   position: relative;
+  overflow: hidden; /* never let the page scroll — only chat-area scrolls */
 }
 
 /* ========================
